@@ -132,18 +132,18 @@ class Qipao {
 let addQipao = (() => {
   let qipaoList = [];
   return function (text) {
-    let qipao;
-    if (qipaoList.length > 0) {
-      qipao = qipaoList.shift();
-    } else {
-      qipao = new Qipao({
-        onComplete() {
-          qipaoList.push(qipao);
-        }
-      });
-    }
+    // let qipao;
+    // if (qipaoList.length > 0) {
+    //   qipao = qipaoList.shift();
+    // } else {
+    //   qipao = new Qipao({
+    //     onComplete() {
+    //       qipaoList.push(qipao);
+    //     }
+    //   });
+    // }
 
-    qipao.start(text);
+    // qipao.start(text);
   };
 })();
 
@@ -155,9 +155,7 @@ function setPrizes(pri) {
 
 function showPrizeList(currentPrizeIndex) {
   let currentPrize = prizes[currentPrizeIndex];
-  if (currentPrize.type === defaultType) {
-    currentPrize.count === "不限制";
-  }
+
   let htmlCode = `<div class="prize-mess">正在抽取<label id="prizeType" class="prize-shine">${currentPrize.text}</label><label id="prizeText" class="prize-shine">${currentPrize.title}</label>，剩余<label id="prizeLeft" class="prize-shine">${currentPrize.count}</label>个</div><ul class="prize-list">`;
   prizes.forEach(item => {
     if (item.type === defaultType) {
@@ -246,12 +244,12 @@ let setPrizeData = (function () {
       lasetPrizeIndex = currentPrizeIndex;
     }
 
-    if (currentPrizeIndex === 0) {
-      prizeElement.prizeType.textContent = "特别奖";
-      prizeElement.prizeText.textContent = " ";
-      prizeElement.prizeLeft.textContent = "不限制";
-      return;
-    }
+    // if (currentPrizeIndex === 0) {
+    //   prizeElement.prizeType.textContent = "特别奖";
+    //   prizeElement.prizeText.textContent = " ";
+    //   prizeElement.prizeLeft.textContent = "不限制";
+    //   return;
+    // }
 
     count = totalCount - count;
     count = count < 0 ? 0 : count;

@@ -1,13 +1,15 @@
 import "./index.css";
 import "../css/animate.min.css";
 import "./canvas.js";
+
 import {
   addQipao,
-  setPrizes,
-  showPrizeList,
+  resetPrize,
   setPrizeData,
-  resetPrize
+  setPrizes,
+  showPrizeList
 } from "./prizeList";
+
 import { NUMBER_MATRIX } from "./config.js";
 
 const ROTATE_TIME = 3000;
@@ -212,6 +214,7 @@ function bindEvent() {
     if (isLotting) {
       if (e.target.id === "lottery") {
         rotateObj.stop();
+
         btns.lottery.innerHTML = "开始抽奖";
       } else {
         addQipao("正在抽奖，抽慢一点点～～");
@@ -854,8 +857,9 @@ window.onload = function () {
             stopAnimate = false;
             animate();
           },
-          () => {
+          (e) => {
             addQipao("背景音乐自动播放失败，请手动播放！");
+            console.log(e)
           }
         );
       } else {
